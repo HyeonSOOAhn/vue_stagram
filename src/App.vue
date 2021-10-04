@@ -9,9 +9,7 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container />
-
-  <div class="sample-box">임시 박스</div>
+  <Container :datas="datas"/>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -23,9 +21,15 @@
 
 <script>
 import Container from './components/Container.vue';
+import datas from './data.js';
 
 export default {
   name: "App",
+  data() {
+    return {
+      datas : datas,
+    }
+  },
   components: {
     Container,
   },

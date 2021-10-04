@@ -1,14 +1,22 @@
 <template>
   <div>
-      컨테이너에요.
-    <Post/>
-    <Post/>
-    <Post/>
+    <Post v-for="data in datas" :key="data" :data="data"/>
   </div>
 </template>
 
 <script>
-export default {};
+import Post from './Post.vue';
+
+export default {
+    name : "Container",
+    props : {
+        datas : Array,
+    },
+    components : {
+        Post,
+    },
+
+};
 </script>
 
 <style>
