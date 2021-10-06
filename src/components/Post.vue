@@ -4,9 +4,9 @@
       <div class="profile" :style="{backgroundImage : `url(${data.userImage})`}"></div>
       <span class="profile-name">{{data.name}}</span>
     </div>
-    <div :class="`${filter} post-body`" :style="{backgroundImage : `url(${data.postImage})`}"></div>
+    <div @click="$store.commit('좋아요')" :class="`${filter} post-body`" :style="{backgroundImage : `url(${data.postImage})`}"></div>
     <div class="post-content">
-      <p>{{data.likes}} Likes</p>
+      <p>{{$store.state.likes}} Likes</p>
       <p><strong>{{data.name}}</strong> {{data.content}}</p>
       <p class="date">{{data.date}}</p>
     </div>

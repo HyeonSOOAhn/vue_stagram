@@ -10,10 +10,20 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
   <h4>{{$store.state.name}}</h4>
-  <button @click="">버튼</button>
+  <button @click="$store.commit('이름변경')">버튼</button>
+  <h4>{{$store.state.age}}</h4>
+  <button @click="$store.commit('나이올리기',10)">버튼</button>
+
+  <p>{{$store.state.more}}</p>
+  <button @click="$store.dispatch('getData')">더보기버튼</button>
 
   <Container @write="write = $event" :datas="datas" :step="step" :url="url" :filter="filter"/>
   <button @click="more">더보기</button>
+
+  <p>{{now2}} {{카운터}}</p>
+  <button @click="카운터++">버튼</button>
+
+  <p>{{name}}</p>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -34,6 +44,7 @@ export default {
   name: "App",
   data() {
     return {
+      카운터 : 0,
       filter : '',
       url : '',
       step : 0,
@@ -50,7 +61,21 @@ export default {
   components: {
     Container,
   },
+
+  computed : {
+    now2() {
+      return new Date();
+    },
+    name() {
+      return this.$stroe.state.name;
+    }
+  },
+
   methods : {
+    now() {
+      return new Date();
+    },
+
     publish(){
       var 내게시물 = {
         name: "Kim Hyun",
